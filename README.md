@@ -51,7 +51,7 @@ use Ray\WebContextParam\Annotation\ServerParam;
 class Foo
 {
     /**
-     * @QueryParam(key="id", var="userID", )
+     * @QueryParam(key="id", var="userID")
      * @CookieParam(key="id", var="tokenId", default="0")
      * @EnvParam("app_mode")
      * @FormParam("token")
