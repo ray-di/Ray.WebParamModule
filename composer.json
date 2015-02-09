@@ -1,0 +1,31 @@
+{
+    "name": "ray/web-param-module",
+    "description":" ",
+    "keywords":[
+    ],
+    "license": "BSD-3-Clause",
+    "autoload":{
+        "psr-4":{
+            "Ray\\WebContextParam\\": "src/"
+        },
+        "files": ["doctrine_annotations.php"]
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "Ray\\WebContextParam\\": "tests/",
+            "Ray\\WebContextParam\\": "tests/Fake"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
+        }
+    },
+    "require": {
+        "ray/di": "~2.0@dev",
+        "doctrine/cache": "~1.5@dev",
+        "aura/web": "dev-master"
+    }
+}
