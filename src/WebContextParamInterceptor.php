@@ -53,7 +53,6 @@ class WebContextParamInterceptor implements MethodInterceptor
             $meta = $this->getMeta($method);
             $this->cache->save($id, $meta);
         }
-        $cnt = count($args);
         $parameters = $invocation->getMethod()->getParameters();
         $cnt =count($parameters);
         for ($i = 0; $i < $cnt; $i++) {
@@ -69,9 +68,7 @@ class WebContextParamInterceptor implements MethodInterceptor
     {
         $meta = [];
         $annotations = $this->reader->getMethodAnnotations($method);
-        /**
- * @var $annotation AbstractWebContextParam
-*/
+        /* @var $annotation AbstractWebContextParam */
         foreach ($annotations as $annotation) {
             if ($annotation instanceof AbstractWebContextParam) {
                 $pos = $this->getPos($annotation, $method);
