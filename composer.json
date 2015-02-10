@@ -1,7 +1,8 @@
 {
     "name": "ray/web-param-module",
-    "description":" ",
+    "description":"Binds the value(s) of a web context to method parameter.",
     "keywords":[
+        "Ray.Di Module", "Runtime Injection"
     ],
     "license": "BSD-3-Clause",
     "autoload":{
@@ -17,7 +18,6 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-develop": "0.1.x-dev"
@@ -25,7 +25,6 @@
     },
     "require": {
         "ray/di": "~2.0@dev",
-        "doctrine/cache": "~1.5@dev",
-        "aura/web": "dev-master"
+        "doctrine/cache": "~1.5"
     }
 }
