@@ -52,12 +52,12 @@ class Foo
 {
     /**
      * @QueryParam(key="id", var="userID")
-     * @CookieParam(key="id", var="tokenId", default="0")
+     * @CookieParam(key="id", var="tokenId")
      * @EnvParam("app_mode")
      * @FormParam("token")
      * @ServerParam(key="SERVER_NAME", var="server")
      */
-    public function foo($userId = null, $tokenId = null, $app_mode, $token, $server)
+    public function foo($userId = null, $tokenId = "0000", $app_mode = null, $token = null, $server = null)
     {
        // $userId   = $_GET['id'];
        // $tokenId  = $_COOKIE['id'] or "0" when unset;
@@ -66,8 +66,9 @@ class Foo
        // $server   = $_SERVER['SERVER_NAME'];
 ```
 
-Web context value are **not** injected when parameters are passed.
-
+ * Web context value are **not** injected when parameters are passed.
+ * Parameter default required.
+ 
 ### Requirements
 
  * PHP 5.4+
