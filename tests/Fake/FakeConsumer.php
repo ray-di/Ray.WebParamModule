@@ -14,9 +14,9 @@ class FakeConsumer
     public $id;
 
     /**
-     * @QueryParam(var="id", key="id", default="default")
+     * @QueryParam(var="id", key="id")
      */
-    public function getId($id = null)
+    public function getId($id = 'default')
     {
         $this->id = $id;
     }

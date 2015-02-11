@@ -24,11 +24,4 @@ abstract class AbstractWebContextParam
      * @var string
      */
     public $var;
-
-    /**
-     * Default value if key is not exist
-     *
-     * @var string
-     */
-    public $default;
 }

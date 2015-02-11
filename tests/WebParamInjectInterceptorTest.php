@@ -54,7 +54,7 @@ class WebParamInjectInterceptorTest extends \PHPUnit_Framework_TestCase
     public function testDefault()
     {
         $obj = new FakeConsumer;
-        $invocation = $this->factory($obj, 'getId', [], new QueryParam, [null]);
+        $invocation = $this->factory($obj, 'getId', [], new QueryParam, []);
         $invocation->proceed();
         $expected = 'default';
         $this->assertSame($expected, $obj->id);

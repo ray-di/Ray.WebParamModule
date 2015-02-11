@@ -47,6 +47,8 @@ class WebContextParamInterceptor implements MethodInterceptor
     {
         $method = $invocation->getMethod();
         $args = $invocation->getArguments();
+        $arr = (array) $args;
+
         $id = __CLASS__ . $invocation->getMethod();
         $meta = $this->cache->fetch($id);
         if (! $meta) {
@@ -57,9 +59,13 @@ class WebContextParamInterceptor implements MethodInterceptor
         $cnt =count($parameters);
         for ($i = 0; $i < $cnt; $i++) {
             if (isset($meta[$i]) && (! isset($args[$i]))) {
-                $args[$i] = $this->getParam($meta, $i);
+                list($hasParam, $param) =  $this->getParam($meta, $i);
+                if ($hasParam) {
+                    $args[$i] = $param;
+                }
             }
         }
+        $arr = (array) $args;
 
         return $invocation->proceed();
     }
@@ -72,7 +78,7 @@ class WebContextParamInterceptor implements MethodInterceptor
         foreach ($annotations as $annotation) {
             if ($annotation instanceof AbstractWebContextParam) {
                 $pos = $this->getPos($annotation, $method);
-                $meta[$pos] = [$annotation::GLOBAL_KEY, $annotation->key, $annotation->default];
+                $meta[$pos] = [$annotation::GLOBAL_KEY, $annotation->key];
             }
         }
 
@@ -81,10 +87,12 @@ class WebContextParamInterceptor implements MethodInterceptor
 
     private function getParam(array $meta, $i)
     {
-        list($globalKey, $key, $default) = $meta[$i];
+        list($globalKey, $key) = $meta[$i];
         $webContext = $this->webContext->get($globalKey);
-
-        return isset($webContext[$key]) ? $webContext[$key] : $default;
+        if (isset($webContext[$key])) {
+            return [true, $webContext[$key]];
+        }
+        return [false, null];
     }
 
 
