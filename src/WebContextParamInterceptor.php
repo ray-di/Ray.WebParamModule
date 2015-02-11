@@ -10,6 +10,7 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\Cache;
 use Ray\Aop\MethodInterceptor;
 use Ray\Aop\MethodInvocation;
+use Ray\Aop\Arguments;
 use Ray\WebContextParam\Annotation\AbstractWebContextParam;
 use Ray\WebContextParam\Exception\NotFoundArgumentException;
 
@@ -47,8 +48,6 @@ class WebContextParamInterceptor implements MethodInterceptor
     {
         $method = $invocation->getMethod();
         $args = $invocation->getArguments();
-        $arr = (array) $args;
-
         $id = __CLASS__ . $invocation->getMethod();
         $meta = $this->cache->fetch($id);
         if (! $meta) {
@@ -58,14 +57,9 @@ class WebContextParamInterceptor implements MethodInterceptor
         $parameters = $invocation->getMethod()->getParameters();
         $cnt =count($parameters);
         for ($i = 0; $i < $cnt; $i++) {
-            if (isset($meta[$i]) && (! isset($args[$i]))) {
-                list($hasParam, $param) =  $this->getParam($meta, $i);
-                if ($hasParam) {
-                    $args[$i] = $param;
-                }
-            }
+            $this->setArg($args, $meta ,$i);
         }
-        $arr = (array) $args;
+
 
         return $invocation->proceed();
     }
@@ -92,6 +86,7 @@ class WebContextParamInterceptor implements MethodInterceptor
         if (isset($webContext[$key])) {
             return [true, $webContext[$key]];
         }
+
         return [false, null];
     }
 
@@ -115,5 +110,20 @@ class WebContextParamInterceptor implements MethodInterceptor
         }
         $msg = sprintf("parameter %s of method %s in %s Not Found", $var, $method->name, $method->getFileName());
         throw new NotFoundArgumentException($msg);
+    }
+
+    /**
+     * @param Arguments $args
+     * @param array     $meta
+     * @param           $i
+     */
+    private function setArg(Arguments $args ,array $meta ,$i)
+    {
+        if (isset($meta[$i]) && (! isset($args[$i]))) {
+            list($hasParam ,$param) = $this->getParam($meta ,$i);
+            if ($hasParam) {
+                $args[$i] = $param;
+            }
+        }
     }
 }

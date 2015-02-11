@@ -14,6 +14,7 @@ class WebContext
      * @param array $globals
      *
      * @SuppressWarnings(PHPMD.Superglobals)
+     * @codeCoverageIgnore
      */
     public function __construct(
         array $globals = []
@@ -37,6 +38,7 @@ class WebContext
 
     /**
      * @SuppressWarnings(PHPMD.Superglobals)
+     * @codeCoverageIgnore
      */
     public function __wakeup()
     {
