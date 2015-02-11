@@ -25,23 +25,15 @@ class WebContextParamModule extends AbstractModule
      */
     protected function configure()
     {
-        $matchWebContextAnnotation = $this->matcher->logicalOr(
-            $this->matcher->annotatedWith(QueryParam::class),
-            $this->matcher->logicalOr(
-                $this->matcher->annotatedWith(CookieParam::class),
-                $this->matcher->logicalOr(
-                    $this->matcher->annotatedWith(FormParam::class),
-                    $this->matcher->logicalOr(
-                        $this->matcher->annotatedWith(EnvParam::class),
-                        $this->matcher->annotatedWith(ServerParam::class)
-                    )
-                )
-            )
-        );
-
         $this->bindInterceptor(
             $this->matcher->any(),
-            $matchWebContextAnnotation,
+            $this->matcher->logicalOr(
+                $this->matcher->annotatedWith(QueryParam::class),
+                $this->matcher->annotatedWith(CookieParam::class),
+                $this->matcher->annotatedWith(FormParam::class),
+                $this->matcher->annotatedWith(EnvParam::class),
+                $this->matcher->annotatedWith(ServerParam::class)
+            ),
             [WebContextParamInterceptor::class]
         );
         $this->bind(Reader::class)->to(AnnotationReader::class)->in(Scope::SINGLETON);
