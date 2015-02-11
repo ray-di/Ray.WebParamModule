@@ -1,4 +1,4 @@
-# ray/web-context-param
+# ray/web-param-module
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/?branch=develop)
 [![Code Coverage](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/?branch=develop)
@@ -10,7 +10,7 @@ Binds the value(s) of a web context (Superglobals) to method parameter.
 
 ### Composer install
 
-    $ composer require ray/web-context-param
+    $ composer require ray/web-param-module
  
 ### Module install
 
