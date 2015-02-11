@@ -26,6 +26,6 @@
     },
     "require": {
         "ray/di": "~2.0@dev",
-        "doctrine/cache": "~1.5"
+        "doctrine/cache": "~1.0"
     }
 }
