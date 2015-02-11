@@ -1,6 +1,7 @@
 # ray/web-context-param
 
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/?branch=develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Ray-Di/Ray.WebContextParam/?branch=develop)
 [![Build Status](https://travis-ci.org/Ray-Di/Ray.WebContextParam.svg)](https://travis-ci.org/Ray-Di/Ray.WebContextParam)
 
 Binds the value(s) of a web context (Superglobals) to method parameter.
