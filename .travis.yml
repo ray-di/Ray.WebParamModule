@@ -8,6 +8,7 @@ php:
 
 before_script:
  - wget https://scrutinizer-ci.com/ocular.phar
+ - composer install --prefer-source
 
 script:
  - phpunit --coverage-text --coverage-clover=coverage.clover

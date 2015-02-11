@@ -1,5 +1,8 @@
 # ray/web-context-param
 
+
+[![Build Status](https://travis-ci.org/Ray-Di/Ray.WebContextParam.svg)](https://travis-ci.org/Ray-Di/Ray.WebContextParam)
+
 Binds the value(s) of a web context (Superglobals) to method parameter.
 
 ## Installation
