@@ -23,5 +23,5 @@ abstract class AbstractWebContextParam
     /**
      * @var string
      */
-    public $var;
+    public $param;
 }

@@ -14,7 +14,7 @@ class FakeConsumer
     public $id;
 
     /**
-     * @QueryParam(var="id", key="id")
+     * @QueryParam(param="id", key="id")
      */
     public function getId($id = 'default')
     {
@@ -22,7 +22,7 @@ class FakeConsumer
     }
 
     /**
-     * @QueryParam(key="id", var="id")
+     * @QueryParam(key="id", param="id")
      */
     public function notFound($notListedInQueryParam)
     {

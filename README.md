@@ -55,11 +55,11 @@ use Ray\WebContextParam\Annotation\ServerParam;
 class Foo
 {
     /**
-     * @QueryParam(key="id", var="userID")
-     * @CookieParam(key="id", var="tokenId")
+     * @QueryParam(key="id", param="userID")
+     * @CookieParam(key="id", param="tokenId")
      * @EnvParam("app_mode")
      * @FormParam("token")
-     * @ServerParam(key="SERVER_NAME", var="server")
+     * @ServerParam(key="SERVER_NAME", param="server")
      */
     public function foo($userId = null, $tokenId = "0000", $app_mode = null, $token = null, $server = null)
     {

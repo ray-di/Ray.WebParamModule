@@ -100,15 +100,15 @@ class WebContextParamInterceptor implements MethodInterceptor
     private function getPos(AbstractWebContextParam $annotation, \ReflectionMethod $method)
     {
         $parameters = $method->getParameters();
-        $var = $annotation->var ? $annotation->var : $annotation->key;
+        $param = $annotation->param ? $annotation->param : $annotation->key;
         foreach ($parameters as $parameter) {
-            if ($parameter->name == $var) {
+            if ($parameter->name == $param) {
                 $pos = $parameter->getPosition();
 
                 return $pos;
             }
         }
-        $msg = sprintf("parameter %s of method %s in %s Not Found", $var, $method->name, $method->getFileName());
+        $msg = sprintf("parameter %s of method %s in %s Not Found", $param, $method->name, $method->getFileName());
         throw new NotFoundArgumentException($msg);
     }
 
