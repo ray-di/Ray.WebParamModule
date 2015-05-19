@@ -78,6 +78,12 @@ class WebContextParamInterceptor implements MethodInterceptor
         return $meta;
     }
 
+    /**
+     * @param array $meta
+     * @param int   $i
+     *
+     * @return array
+     */
     private function getParam(array $meta, $i)
     {
         list($globalKey, $key) = $meta[$i];
@@ -113,7 +119,7 @@ class WebContextParamInterceptor implements MethodInterceptor
     /**
      * @param Arguments $args
      * @param array     $meta
-     * @param           $i
+     * @param in        $i
      */
     private function setArg(Arguments $args, array $meta, $i)
     {
