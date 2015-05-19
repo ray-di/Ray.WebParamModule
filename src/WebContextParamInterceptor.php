@@ -8,9 +8,9 @@ namespace Ray\WebContextParam;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\Cache;
+use Ray\Aop\Arguments;
 use Ray\Aop\MethodInterceptor;
 use Ray\Aop\MethodInvocation;
-use Ray\Aop\Arguments;
 use Ray\WebContextParam\Annotation\AbstractWebContextParam;
 use Ray\WebContextParam\Exception\NotFoundArgumentException;
 
@@ -55,11 +55,10 @@ class WebContextParamInterceptor implements MethodInterceptor
             $this->cache->save($id, $meta);
         }
         $parameters = $invocation->getMethod()->getParameters();
-        $cnt =count($parameters);
+        $cnt = count($parameters);
         for ($i = 0; $i < $cnt; $i++) {
-            $this->setArg($args, $meta ,$i);
+            $this->setArg($args, $meta, $i);
         }
-
 
         return $invocation->proceed();
     }
@@ -90,7 +89,6 @@ class WebContextParamInterceptor implements MethodInterceptor
         return [false, null];
     }
 
-
     /**
      * @param AbstractWebContextParam $annotation
      * @param \ReflectionMethod       $method
@@ -117,10 +115,10 @@ class WebContextParamInterceptor implements MethodInterceptor
      * @param array     $meta
      * @param           $i
      */
-    private function setArg(Arguments $args ,array $meta ,$i)
+    private function setArg(Arguments $args, array $meta, $i)
     {
         if (isset($meta[$i]) && (! isset($args[$i]))) {
-            list($hasParam ,$param) = $this->getParam($meta ,$i);
+            list($hasParam, $param) = $this->getParam($meta, $i);
             if ($hasParam) {
                 $args[$i] = $param;
             }

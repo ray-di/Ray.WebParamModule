@@ -6,7 +6,6 @@
  */
 namespace Ray\WebContextParam;
 
-
 use Ray\WebContextParam\Annotation\QueryParam;
 
 class FakeConsumer

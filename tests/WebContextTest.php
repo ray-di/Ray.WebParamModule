@@ -2,7 +2,7 @@
 
 namespace Ray\WebContextParam;
 
-class WebContextTes extends \PHPUnit_Framework_TestCase
+class WebContextTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var WebContext
