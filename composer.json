@@ -4,7 +4,7 @@
     "keywords":[
       "Ray.Di Module", "Web context", "Testability"
     ],
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "autoload":{
         "psr-4":{
             "Ray\\WebContextParam\\": "src/"
