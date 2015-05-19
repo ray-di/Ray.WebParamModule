@@ -2,7 +2,7 @@
 /**
  * This file is part of the Ray.AuraSqlModule package
  *
- * @license http://opensource.org/licenses/bsd-license.php BSD
+ * @license http://opensource.org/licenses/bsd-license.php MIT
  */
 namespace Ray\WebContextParam;
 

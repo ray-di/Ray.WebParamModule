@@ -2,9 +2,13 @@
     "name": "ray/web-param-module",
     "description":"Binds the value(s) of a web context to method parameter.",
     "keywords":[
-      "Ray.Di Module", "Web context", "Testability"
+        "Ray.Di Module", "Web context", "Testability"
     ],
-    "license": "BSD-3-Clause",
+    "license": "MIT",
+    "require": {
+        "ray/di": "~2.0",
+        "doctrine/cache": "~1.0"
+    },
     "autoload":{
         "psr-4":{
             "Ray\\WebContextParam\\": "src/"
@@ -16,16 +20,5 @@
             "Ray\\WebContextParam\\": "tests/",
             "Ray\\WebContextParam\\": "tests/Fake"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "0.1.x-dev"
-        }
-    },
-    "require": {
-        "ray/di": "~2.0@dev",
-        "doctrine/cache": "~1.0"
     }
 }
