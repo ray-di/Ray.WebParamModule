@@ -38,5 +38,6 @@ class WebContextParamModule extends AbstractModule
         );
         $this->bind(Reader::class)->to(AnnotationReader::class)->in(Scope::SINGLETON);
         $this->bind(Cache::class)->to(ArrayCache::class)->in(Scope::SINGLETON);
+        $this->bind(WebContext::class);
     }
 }
