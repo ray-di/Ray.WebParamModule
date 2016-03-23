@@ -78,6 +78,15 @@ class WebParamInjectInterceptorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expected, $obj->id);
     }
 
+    public function testDefaultProperty()
+    {
+        $obj = new FakeConsumer;
+        $invocation = $this->factory($obj, 'useDefault', [], new QueryParam, []);
+        $invocation->proceed();
+        $expected = '_deffault_by_interceptor_';
+        $this->assertSame($expected, $obj->id);
+    }
+
     public function testCookieParam()
     {
         $this->assertSame('_COOKIE', CookieParam::GLOBAL_KEY);

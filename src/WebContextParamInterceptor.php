@@ -71,28 +71,11 @@ class WebContextParamInterceptor implements MethodInterceptor
         foreach ($annotations as $annotation) {
             if ($annotation instanceof AbstractWebContextParam) {
                 $pos = $this->getPos($annotation, $method);
-                $meta[$pos] = [$annotation::GLOBAL_KEY, $annotation->key];
+                $meta[$pos] = [$annotation::GLOBAL_KEY, $annotation->key, $annotation->default];
             }
         }
 
         return $meta;
-    }
-
-    /**
-     * @param array $meta
-     * @param int   $i
-     *
-     * @return array
-     */
-    private function getParam(array $meta, $i)
-    {
-        list($globalKey, $key) = $meta[$i];
-        $webContext = $this->webContext->get($globalKey);
-        if (isset($webContext[$key])) {
-            return [true, $webContext[$key]];
-        }
-
-        return [false, null];
     }
 
     /**
@@ -124,10 +107,30 @@ class WebContextParamInterceptor implements MethodInterceptor
     private function setArg(Arguments $args, array $meta, $i)
     {
         if (isset($meta[$i]) && (! isset($args[$i]))) {
-            list($hasParam, $param) = $this->getParam($meta, $i);
+            list($hasParam, $param, $default) = $this->getParam($meta, $i);
             if ($hasParam) {
                 $args[$i] = $param;
             }
+            if ($default) {
+                $args[$i] = $default;
+            }
         }
+    }
+
+    /**
+     * @param array $meta
+     * @param int   $i
+     *
+     * @return array
+     */
+    private function getParam(array $meta, $i)
+    {
+        list($globalKey, $key, $default) = $meta[$i];
+        $webContext = $this->webContext->get($globalKey);
+        if (isset($webContext[$key])) {
+            return [true, $webContext[$key], $default];
+        }
+
+        return [false, null, $default];
     }
 }

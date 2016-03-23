@@ -34,4 +34,12 @@ class FakeConsumer
     {
         $this->id = $id;
     }
+
+    /**
+     * @QueryParam(key="id", param="id", default="_deffault_by_interceptor_")
+     */
+    public function useDefault($id)
+    {
+        $this->id = $id;
+    }
 }
