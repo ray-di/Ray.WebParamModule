@@ -1,0 +1,13 @@
+{
+    "name": "ray/web-param-module",
+    "description":"Web context annotations",
+    "keywords":[
+        "annotation"
+    ],
+    "license": "MIT",
+    "autoload":{
+        "psr-4":{
+            "Ray\\WebContextParam\\": "src/"
+        }
+    }
+}
