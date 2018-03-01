@@ -9,6 +9,11 @@ namespace Ray\WebContextParam\Annotation;
 abstract class AbstractWebContextParam
 {
     /**
+     * Key of Super global value
+     */
+    const GLOBAL_KEY = '';
+
+    /**
      * Key of query parameter
      *
      * @var string
