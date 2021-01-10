@@ -1,15 +1,14 @@
 <?php
-/**
- * This file is part of the Ray.WebContextParam.
- *
- * @license http://opensource.org/licenses/bsd-license.php MIT
- */
+
 namespace Ray\WebContextParam\Annotation;
+
+use Attribute;
 
 /**
  * @Annotation
  * @Target("METHOD")
  */
+#[Attribute(Attribute::TARGET_PARAMETER)]
 final class QueryParam extends AbstractWebContextParam
 {
     const GLOBAL_KEY = '_GET';
