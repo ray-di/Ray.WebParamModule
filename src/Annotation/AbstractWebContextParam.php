@@ -2,6 +2,9 @@
 
 namespace Ray\WebContextParam\Annotation;
 
+use function is_array;
+use function is_string;
+
 abstract class AbstractWebContextParam
 {
     /**
@@ -24,13 +27,18 @@ abstract class AbstractWebContextParam
     public $param;
 
     /**
-     * @param array $values{key?: string, param?: string}
-     * @param string $key
-     * @param string $param
+     * @param string|array{key?: string, param?: string} $values
      */
-    public function __construct(array $values = [], $key = '', $param = '')
+    public function __construct($key)
     {
-        $this->key = isset($values['key']) ? $values['key'] : $key;
-        $this->param = isset($values['param']) ? $values['param'] : $param;
+        if (is_array($key)) {
+            $this->key = $key['key'];
+            $this->param = $key['param'];
+
+            return;
+        }
+        if (is_string($key)) {
+            $this->key = $key;
+        }
     }
 }
