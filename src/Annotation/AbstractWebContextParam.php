@@ -3,8 +3,6 @@
 namespace Ray\WebContextParam\Annotation;
 
 use Doctrine\Common\Annotations\NamedArgumentConstructorAnnotation;
-use function is_array;
-use function is_string;
 
 abstract class AbstractWebContextParam implements NamedArgumentConstructorAnnotation
 {
@@ -23,13 +21,13 @@ abstract class AbstractWebContextParam implements NamedArgumentConstructorAnnota
     /**
      * Parameter(Variable) name
      *
+     * This parameter is used to specify a parameter from a method in PHP7,
+     * and is not needed when attributing to a parameter in PHP8.
+     *
      * @var string
      */
     public $param;
 
-    /**
-     * @param string|array{key?: string, param?: string} $values
-     */
     public function __construct(string $key = '', string $param = '')
     {
         $this->key = $key;
