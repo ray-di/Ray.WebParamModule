@@ -2,10 +2,11 @@
 
 namespace Ray\WebContextParam\Annotation;
 
+use Doctrine\Common\Annotations\NamedArgumentConstructorAnnotation;
 use function is_array;
 use function is_string;
 
-abstract class AbstractWebContextParam
+abstract class AbstractWebContextParam implements NamedArgumentConstructorAnnotation
 {
     /**
      * Key of Super global value
@@ -29,16 +30,9 @@ abstract class AbstractWebContextParam
     /**
      * @param string|array{key?: string, param?: string} $values
      */
-    public function __construct($key)
+    public function __construct(string $key = '', string $param = '')
     {
-        if (is_array($key)) {
-            $this->key = $key['key'];
-            $this->param = $key['param'];
-
-            return;
-        }
-        if (is_string($key)) {
-            $this->key = $key;
-        }
+        $this->key = $key;
+        $this->param = $param;
     }
 }
