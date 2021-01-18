@@ -5,7 +5,8 @@
         "annotation"
     ],
     "require": {
-        "php": "^5.4 || ^7.0 || ^8.0"
+        "php": "^5.4 || ^7.0 || ^8.0",
+        "doctrine/annotations": "^1.11"
     },
     "license": "MIT",
     "autoload":{
