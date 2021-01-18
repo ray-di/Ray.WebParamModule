@@ -28,7 +28,7 @@ abstract class AbstractWebContextParam implements NamedArgumentConstructorAnnota
      */
     public $param;
 
-    public function __construct(string $key = '', string $param = '')
+    public function __construct(string $key, string $param = '')
     {
         $this->key = $key;
         $this->param = $param;
